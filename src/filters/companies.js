@@ -20,7 +20,7 @@ const setupCompanies = (store) => {
         newStore = [...store];
       } else {
         newStore = store.filter(
-          (product) => product.company === e.target.textContext
+          (product) => product.company === e.target.textContent
         );
       }
       display(newStore, getElement(".products-container"));
