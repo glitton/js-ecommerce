@@ -12,7 +12,7 @@ const setupCompanies = (store) => {
     })
     .join("");
 
-  companiesDOM.addEventListener("click", function (e) {
+  companiesDOM.addEventListener("click", (e) => {
     const element = e.target;
     if (element.classList.contains("company-btn")) {
       let newStore = [];
