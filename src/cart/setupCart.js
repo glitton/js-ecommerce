@@ -26,13 +26,29 @@ export const addToCart = (id) => {
     cart = [...cart, product];
     // add product to the DOM
     addToCartDOM(product);
-    // console.log("this is the cart", cart);
   } else {
     // update values
   }
-
-  // more stuff later
+  // add one to the item count
+  displayCartItemCount();
+  // display cart totals
+  displayCartTotal();
+  // set cart in storage
+  setStorageItem("cart", cart);
   openCart();
+};
+
+const displayCartItemCount = () => {
+  const amount = cart.reduce((total, cartItem) => {
+    return (total += cartItem.amount);
+  }, 0);
+  cartItemCountDOM.textContent = amount;
+};
+const displayCartTotal = () => {
+  let total = cart.reduce((total, cartItem) => {
+    return (total += cartItem.price * cartItem.amount);
+  }, 0);
+  cartTotalDOM.textContent = `Total :  ${formatPrice(total)}`;
 };
 
 const init = () => {
