@@ -50,8 +50,21 @@ const displayCartTotal = () => {
   }, 0);
   cartTotalDOM.textContent = `Total :  ${formatPrice(total)}`;
 };
+const displayCartItemsDOM = () => {
+  cart.forEach((cartItem) => {
+    addToCartDOM(cartItem);
+  });
+};
+const setupCartFunctionality = () => {};
 
 const init = () => {
-  console.log(cart);
+  // display amount of cart items
+  displayCartItemCount();
+  // display total
+  displayCartTotal();
+  // add all cart itmes to the DOM
+  displayCartItemsDOM();
+  // setup cart functionality
+  setupCartFunctionality();
 };
 init();
