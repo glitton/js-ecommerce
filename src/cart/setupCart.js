@@ -59,6 +59,9 @@ const displayCartItemsDOM = () => {
     addToCartDOM(cartItem);
   });
 };
+const removeItem = (id) => {
+  cart = cart.filter((cartItem) => cartItem.id !== id);
+};
 const increaseAmount = (id) => {
   let newAmount;
   cart = cart.map((cartItem) => {
@@ -71,7 +74,24 @@ const increaseAmount = (id) => {
   return newAmount;
 };
 
-const setupCartFunctionality = () => {};
+const setupCartFunctionality = () => {
+  cartItemsDOM.addEventListener("click", (e) => {
+    const element = e.target;
+    const parent = e.target.parentElement;
+    const id = e.target.dataset.id;
+    const parentID = e.target.parentElement.dataset.id;
+    // remove item
+    if (element.classList.contains("cart-item-remove-btn")) {
+      removeItem(id);
+      parent.parentElement.remove();
+    }
+    // increase
+    // descrease
+    displayCartItemCount();
+    displayCartTotal();
+    setStorageItem("cart", cart);
+  });
+};
 
 const init = () => {
   // display amount of cart items
